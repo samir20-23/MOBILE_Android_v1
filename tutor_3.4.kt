@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-    import com.example.app_v2.R // Assurez-vous d'importer R correctement
+import com.example.app_v2.R
 
 @Composable
 fun ImageDisplay() {
@@ -22,7 +22,7 @@ fun ImageDisplay() {
         Text(text = "Voici une image :")
 
         Image(
-            painter = painterResource(id = R.drawable.image1), // Remplacez par le nom de votre image
+            painter = painterResource(id = R.drawable.image1),
             contentDescription = "Description de l'image",
             modifier = Modifier.size(200.dp)
         )
