@@ -1,36 +1,114 @@
-package com.example.app_v2.MOBILE_Android_v1
+//package com.example.app_v7.MOBILE_Android_v1
+//
+//import android.os.Bundle
+//import androidx.activity.ComponentActivity
+//import androidx.activity.compose.setContent
+//import androidx.compose.foundation.Image
+//import androidx.compose.foundation.layout.*
+//import androidx.compose.runtime.Composable
+//import androidx.compose.ui.Alignment
+//import androidx.compose.ui.Modifier
+//import androidx.compose.ui.layout.ContentScale
+//import androidx.compose.ui.res.painterResource
+//import androidx.compose.ui.tooling.preview.Preview
+//import androidx.compose.ui.unit.dp
+//
+//class MainActivity : ComponentActivity() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContent {
+//            ImageScreen()
+//        }
+//    }
+//}
+//
+//@Composable
+//fun ImageScreen() {
+//    // Display just the image
+//    Image(
+//        painter = painterResource(id = R.drawable.android_logo), // Change to your image name
+//        contentDescription = "Logo Android",
+//        contentScale = ContentScale.Crop,
+//        modifier = Modifier
+//            .fillMaxSize() // Fill the entire screen
+//            .padding(16.dp) // Optional padding
+//    )
+//}
+//
+//@Preview(showBackground = true)
+//@Composable
+//fun ImagePreview() {
+//    ImageScreen()
+//}
 
-import androidx.compose.foundation.Image
+package com.example.happybirthday
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.app_v2.R
+import androidx.compose.ui.unit.sp
+import com.example.happybirthday.ui.theme.HappyBirthdayTheme
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            HappyBirthdayTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    GreetingText(
+                        message = "Happy Birthday Sam!",
+                        from = "From Emma",
+                        modifier = Modifier.padding(8.dp)
+                    )
+                }
+            }
+        }
+    }
+}
 
 @Composable
-fun ImageDisplay() {
+fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
     Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+        verticalArrangement = Arrangement.Center,
+        modifier = modifier
     ) {
-        Text(text = "Voici une image :")
-
-        Image(
-            painter = painterResource(id = R.drawable.image1),
-            contentDescription = "Description de l'image",
-            modifier = Modifier.size(200.dp)
+        Text(
+            text = message,
+            fontSize = 100.sp,
+            lineHeight = 116.sp,
+            textAlign = TextAlign.Center
+        )
+        Text(
+            text = from,
+            fontSize = 36.sp,
+            modifier = Modifier
+                .padding(16.dp)
+                .align(alignment = Alignment.End)
         )
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun ImageDisplayPreview() {
-    ImageDisplay()
+fun BirthdayCardPreview() {
+    HappyBirthdayTheme {
+        GreetingText(message = "Happy Birthday Sam!", from = "From Emma")
+    }
 }
